@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <title>Sten, Saks, Papir</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Sten, Saks, Papir</h1>
+
+  <div class="kolonner">
+    <div>
+      <h2>Spiller</h2>
+      <button id="Sten">🪨 Sten</button>
+      <button id="Saks">✂️ Saks</button>
+      <button id="Papir">📄 Papir</button>
+    </div>
+    <div>
+      <h2>Computer</h2>
+      <p id="computerValg">–</p>
+    </div>
+  </div>
+
+  <h2 id="resultat">Resultatet vises her...</h2>
+
+  <p>Point: Du <span id="spillerPoint">0</span> – Computer <span id="computerPoint">0</span></p>
+
+  <button id="nulstil">Nulstil</button>
+
+  <script>
+    "use strict";
+
+    // Point
+    let spiller = 0, computer = 0;
+
+    // Mulige valg
+    const muligheder = ["Sten", "Saks", "Papir"];
+
+    // Funktion til at spille en runde
+    function spil(valg) {
+      const comp = muligheder[Math.floor(Math.random() * 3)];
+      document.getElementById("computerValg").textContent = comp;
+
+      let tekst = "";
+      if (valg === comp) {
+        tekst = "Uafgjort!";
+      } else if (
+        (valg === "Sten" && comp === "Saks") ||
+        (valg === "Saks" && comp === "Papir") ||
+        (valg === "Papir" && comp === "Sten")
+      ) {
+        spiller++;
+        tekst = "Du vandt runden 🎉";
+      } else {
+        computer++;
+        tekst = "Computeren vandt runden 🤖";
+      }
+
+      document.getElementById("resultat").textContent = tekst;
+      document.getElementById("spillerPoint").textContent = spiller;
+      document.getElementById("computerPoint").textContent = computer;
+    }
+
+    // Nulstil spillet
+    function nulstil() {
+      spiller = 0;
+      computer = 0;
+      document.getElementById("computerValg").textContent = "–";
+      document.getElementById("resultat").textContent = "Resultatet vises her...";
+      document.getElementById("spillerPoint").textContent = 0;
+      document.getElementById("computerPoint").textContent = 0;
+    }
+
+    // Event listeners
+    document.getElementById("Sten").addEventListener("click", () => spil("Sten"));
+    document.getElementById("Saks").addEventListener("click", () => spil("Saks"));
+    document.getElementById("Papir").addEventListener("click", () => spil("Papir"));
+    document.getElementById("nulstil").addEventListener("click", nulstil);
+  </script>
+</body>
+</html>

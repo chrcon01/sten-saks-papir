@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 30px;
+}
+
+.kolonner {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+  margin: 5px auto;
+  padding: 10px 15px;
+}
+button:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
