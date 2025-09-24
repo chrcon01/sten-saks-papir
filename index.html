@@ -28,15 +28,10 @@
   <button id="nulstil">Nulstil</button>
 
   <script>
-    "use strict";
-
-    // Point
     let spiller = 0, computer = 0;
 
-    // Mulige valg
     const muligheder = ["Sten", "Saks", "Papir"];
 
-    // Funktion til at spille en runde
     function spil(valg) {
       const comp = muligheder[Math.floor(Math.random() * 3)];
       document.getElementById("computerValg").textContent = comp;
@@ -61,17 +56,15 @@
       document.getElementById("computerPoint").textContent = computer;
     }
 
-    // Nulstil spillet
     function nulstil() {
       spiller = 0;
       computer = 0;
       document.getElementById("computerValg").textContent = "–";
-      document.getElementById("resultat").textContent = "Resultatet vises her...";
+      document.getElementById("resultat").textContent = "Resultatet vises her:";
       document.getElementById("spillerPoint").textContent = 0;
       document.getElementById("computerPoint").textContent = 0;
     }
 
-    // Event listeners
     document.getElementById("Sten").addEventListener("click", () => spil("Sten"));
     document.getElementById("Saks").addEventListener("click", () => spil("Saks"));
     document.getElementById("Papir").addEventListener("click", () => spil("Papir"));
