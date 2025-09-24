@@ -28,21 +28,25 @@
   <button id="nulstil">Nulstil</button>
 
   <script>
+     /*Point tællere - 2 variabler til at holde styr på point*/
     let spiller = 0, computer = 0;
 
+    /* Muligheder - array med de tre valg, som spiller og computer kan vælge imellem */
     const muligheder = ["Sten", "Saks", "Papir"];
 
+    /*Spil funktion - håndterer spillets logik, opdaterer point og viser resultat, når en spiller vælger et valg, og når nulstil knappen trykkes, nulstilles pointene */
     function spil(valg) {
-      const comp = muligheder[Math.floor(Math.random() * 3)];
-      document.getElementById("computerValg").textContent = comp;
+      const computerValg = muligheder[Math.floor(Math.random() * 3)];
+      document.getElementById("computerValg").textContent = computerValg;
 
+      /*Bestem vinderen og opdater point, samt vis resultatet, afhængigt af spillerens og computerens valg, opdateres pointene og resultatet vises, hvilket angiver, om spilleren vandt, computeren vandt, eller om det var uafgjort*/
       let tekst = "";
-      if (valg === comp) {
+      if (valg === computerValg) {
         tekst = "Uafgjort!";
       } else if (
-        (valg === "Sten" && comp === "Saks") ||
-        (valg === "Saks" && comp === "Papir") ||
-        (valg === "Papir" && comp === "Sten")
+        (valg === "Sten" && computerValg === "Saks") ||
+        (valg === "Saks" && computerValg === "Papir") ||
+        (valg === "Papir" && computerValg === "Sten")
       ) {
         spiller++;
         tekst = "Du vandt runden 🎉";
@@ -56,6 +60,7 @@
       document.getElementById("computerPoint").textContent = computer;
     }
 
+    /* Nulstil funktionen - nulstiller pointene og opdaterer visningen, når nulstil knappen trykkes, sættes pointene til nul, og visningen opdateres for at afspejle dette */
     function nulstil() {
       spiller = 0;
       computer = 0;
@@ -68,7 +73,7 @@
     document.getElementById("Sten").addEventListener("click", () => spil("Sten"));
     document.getElementById("Saks").addEventListener("click", () => spil("Saks"));
     document.getElementById("Papir").addEventListener("click", () => spil("Papir"));
-    document.getElementById("nulstil").addEventListener("click", nulstil);
+    document.getElementById("nulstil").addEventListener("click", nulstil); 
   </script>
 </body>
 </html>
